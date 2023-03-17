@@ -8,5 +8,5 @@ services:
         - 8000:8000
         - 9443:9443
      volumes:
-        - /GithubDocker/containers/portainer:/var/run/docker.sock
+        - /var/run/docker.sock:/var/run/docker.sock
         - /GithubDocker/containers/portainer:/data portainer

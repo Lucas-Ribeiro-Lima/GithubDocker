@@ -1,0 +1,12 @@
+version: "3"
+services:
+   app:
+     image: 'portainer/portainer-ce:latest'
+     restart: unless-stopped
+     container_name: portainergit
+     ports:
+        - 8000:8000
+        - 9443:9443
+     volumes:
+        - /GithubDocker/containers/portainer:/var/run/docker.sock
+        - /GithubDocker/containers/portainer:/data portainer

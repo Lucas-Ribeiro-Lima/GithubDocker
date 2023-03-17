@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  backend:
+    container_name: wol-server
+    image: golang:1.17.6-alpine3.15
+    restart: unless-stopped
+    volumes:
+      - .:/wol-web
+      - ./frontend:/frontend
+    entrypoint: sh -c
+    command:
+      - |
+        cd /wol-web/backend
+        apk add build-base
+        go build -o server .
+        /wol-web/backend/server
+    network_mode: 'host'
+volumes:
+  wol-web-db:

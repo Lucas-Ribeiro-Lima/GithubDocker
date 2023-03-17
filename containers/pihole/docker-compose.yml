@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  pihole:
+    container_name: piholegit
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "82:80/tcp"
+    environment:
+      TZ: 'America/Sao_Paulo'
+      WEBPASSWORD:
+      FTLCONF_LOCAL_IPV4:
+      VIRTUAL_HOST:
+      VIRTUAL_PORT: 82
+      WEB_PORT: 82
+
+    volumes:
+      - '/GithubDocker/containers/pihole/app:/etc/pihole'
+      - '/GithubDocker/containers/pihole/dnsmasq:/etc/dnsmasq.d'
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped

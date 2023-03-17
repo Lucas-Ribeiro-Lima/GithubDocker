@@ -1,0 +1,31 @@
+version: "3"
+
+volumes:
+  onlyoffice:
+
+services:
+  onlyoffice:
+     image: onlyoffice/documentserver
+     container_name: onlyoffice
+     restart: unless-stopped
+     ports:
+      - 8082:80
+     environment:
+      - VIRTUAL_PORT=8082
+      - VIRTUAL_HOST=
+      - WOPI_ENABLED=true
+      #Uncomment following lines to activate JWT
+      #- JWT_ENABLED=true
+      #- JWT_SECRET=
+      #- JWT_HEADER=Authorization
+      #- JWT_IN_BODY=true
+      #- ONLYOFFICE_HTTPS_HSTS_ENABLED=false  
+     volumes:
+      - /GithubDocker/containers/onlyoffice/logs:/var/log/onlyoffice
+      - /GithubDocker/containers/onlyoffice/data:/var/www/onlyoffice/Data
+      - /GithubDocker/containers/onlyoffice/lib:/var/lib/onlyoffice
+      - /GithubDocker/containers/onlyoffice/rabbitmq:/var/lib/rabbitmq
+      - /GithubDocker/containers/onlyoffice/redis:/var/lib/redis
+      - /GithubDocker/containers/onlyoffice/db:/var/lib/postgresql
+      - /GithubDocker/containers/onlyoffice/usr:/usr/share/fonts/truetype/custom
+     network_mode: bridge

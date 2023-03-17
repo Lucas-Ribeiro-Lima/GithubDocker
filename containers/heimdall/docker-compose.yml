@@ -1,0 +1,17 @@
+---
+version: "3.2"
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall-github
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ="America/Sao_Paulo"
+    volumes:
+      - /GithubDocker/containers/heimdall:/config
+    ports:
+      - 8088:80
+      - 4443:443
+    network_mode: bridge
+    restart: unless-stopped

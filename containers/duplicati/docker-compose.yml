@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=0 #there is some services with folders acessible only by root
+      - PGID=0 #there is some services with folder acessible only by root
+      - TZ=Brazil
+    volumes:
+      - /GithubDocker/containers/duplicati/config:/config
+      - /duplicati_backups:/backups # create a folder outside the main folder "GithubDocker", that folder is where goes the backups
+      - /GithubDocker/containers:/source # folder the duplicati can see to do the backups
+    ports:
+      - 8200:8200
+    network_mode: bridge
+    restart: unless-stopped

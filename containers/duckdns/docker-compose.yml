@@ -1,5 +1,5 @@
 ---
-version: "latest"
+version: "3"
 services:
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest

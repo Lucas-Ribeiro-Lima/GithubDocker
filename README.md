@@ -1,4 +1,4 @@
-# Containered micro-services
+# Containered Micro-Services
 **Docker containers configurations**
 
 This is a reposity to my personal use container's and configuration files, to expose my personal project of deploying and configurating a personal ubuntu server with containered micro services with free licenses, these services can be potentially escalated to a enterprise use.
@@ -41,24 +41,24 @@ The complete instructions of configuration can be found in the README.md of each
 
 [Portainer](/containers/portainer)
 
+I *Strongly* recommend the use of the portainer to deploy the services, because is easialy to visualize the informations, restarting services, modifying resources, checking logs but ins't mandatory. You can use the docker-compose.yml pre-mades of this repository in the folders of each service to configure and deploy.
+
 ```yaml
 ---
 version: "3"
 services:
-  duckdns:
-    image: lscr.io/linuxserver/duckdns:latest
-    container_name: duckdnsgit
-    environment:
-      - PUID=1000 #optional
-      - PGID=1000 #optional
-      - TZ=America/Sao_Paulo
-      - SUBDOMAINS=
-      - TOKEN=
-    volumes:
-      - /GithubDocker/containers/duckdns:/config #optional
-    network_mode: bridge
-    restart: unless-stopped
+   app:
+     image: 'portainer/portainer-ce:latest'
+     restart: unless-stopped
+     container_name: portainergit
+     ports:
+        - 8000:8000
+        - 9443:9443
+     volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /GithubDocker/containers/portainer:/data portainer
 ```
+
 [Heimdall](/containers/heimdall)
 
 ```yaml
@@ -323,7 +323,7 @@ services:
     container_name: duplicati
     environment:
       - PUID=0 #there is some services with folders acessible only by root
-      - PGID=0 #there is some services with folder acessible only by root
+      - PGID=0 #there is some services with folders acessible only by root
       - TZ=Brazil
     volumes:
       - /GithubDocker/containers/duplicati/config:/config

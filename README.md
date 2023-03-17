@@ -61,6 +61,8 @@ services:
 
 [Heimdall](/containers/heimdall)
 
+WebUI to organizate and configure all your ip's and port's, is a easy way to access your's services without typing the URL and port's all the time.
+
 ```yaml
 ---
 version: "3.2"
@@ -168,6 +170,8 @@ services:
 ```
 
 [Nginx Proxy Manager](/containers/proxy)
+
+Version of nginx with a UI, its easy to configure our proxy and manage our let'sencrypt SSL
 
 ```yaml
 version: "3"

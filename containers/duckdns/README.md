@@ -21,8 +21,8 @@ services:
 
 Some configurations gonna be in hand, you gonna need to specify the domains do you wanna actualize and your token to authorize.
 
-> Everything you will need can be found on official duckdns site
-> https://www.duckdns.org/domains.
+Everything you will need can be found on official duckdns site
+> [DuckdDNS Official Site](https://www.duckdns.org/domains)
 
 > Create a free acount and create some domains, then after configuring the correct domains and token all are set to start the container,
 

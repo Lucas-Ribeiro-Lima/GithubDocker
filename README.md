@@ -1,18 +1,18 @@
 # Containered micro-services
-**My docker containers configurations**
+**Docker containers configurations**
 
 This is a reposity to my personal use container's and configuration files, to expose my personal project of deploying and configurating a personal ubuntu server with containered micro services with free licenses, these services can be potentially escalated to a enterprise use.
 
 All services are deployed with free licenses without cost's
 
-**Actually my project contain**
+**Project**
 
 1. Ubuntu Server LTS instalattion and configuration
 2. Basic linux management
 3. Installation of docker
 4. Network management
 
-**In my docker i have that services and integrations:**
+**Services and Integrations:**
 
 1. Portainer
 2. Wake on Lan
@@ -27,10 +27,34 @@ All services are deployed with free licenses without cost's
 
 **Directory Structure**
 
-git-project  // Where we going to store all volumes
+1. GithubDocker  // Where we going to store all volumes
 
-containers-folders // Here we going to create one folder to integrated micro-services
-
-app data config // Some containers have dependencies, like databases, internal-proxies, data storage and here we going to divide that to facilitate manutention of configs
+   - containers-folders // Here we going to create one folder to integrated micro-services
+   
+      - app data config // Some containers have dependencies, like databases, internal-proxies, data storage and here we going to divide that to facilitate manutention of configs. Here i'm going to store the docker-compose.yml o each service that can be used to deploy without the portainer management stack.
 
 **Keep in mind, rename this foldes need's changes in all docker-composes.yml files to indicate the new correct path**
+
+**Docker-compose.yml Services**
+
+[Portainer](/containers/portainer)
+
+https://github.com/Thyfas/GithubDocker/blob/12fc961a20590737c9a1d5e07b6ecc7091ad63e4/containers/portainer/docker-compose.yml#L1-L12
+
+[Duckdns](/containers/duckdns)
+
+[Heimdall](/containers/heimdall)
+
+[Onlyoffice](/containers/onlyoffice)
+
+[Wireguard](/containers/wireguard)
+
+[Nextcloud](/containers/nextcloud)
+
+[Pi-hole](/containers/pihole)
+
+[Nginx Proxy Manager](/containers/proxy)
+
+[Wake on Lan](/containers/wol)
+
+[Duplicati](/containers/duplicati)

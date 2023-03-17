@@ -1,9 +1,11 @@
-# NGINX Proxy Manager
+# **NGINX Proxy Manager**
 
-[NGINX Proxy Manager Officel Web Site](https://nginxproxymanager.com/)
+[NGINX Proxy Manager Official Web Site](https://nginxproxymanager.com/)
 
-Default access:
+**Default access:**
+
 user: admin@example.com
+
 password: changeme
 
 ```yaml

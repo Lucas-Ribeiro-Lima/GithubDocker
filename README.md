@@ -61,7 +61,7 @@ services:
 
 [Heimdall](/containers/heimdall)
 
-WebUI to organizate and configure all your ip's and port's, is a easy way to access your's services without typing the URL and port's all the time.
+WebUI to organizate and configure all your IP's and port's, is a easy way to access your's services without typing the URL and port's all the time.
 
 ```yaml
 ---

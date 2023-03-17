@@ -1,4 +1,4 @@
-# Containered Micro-Services
+# **Containered Micro-Services**
 **Docker containers configurations**
 
 This is a reposity to my personal use container's and configuration files, to expose my personal project of deploying and configurating a personal ubuntu server with containered micro services with free licenses, these services can be potentially escalated to a enterprise use.
@@ -115,6 +115,8 @@ services:
 
 [Duckdns](/containers/duckdns)
 
+Free DDNS domain services, i use them because they attend for me, but you cant use normally your favorite DDNS without problems.
+
 ```yaml
 ---
 version: "3"
@@ -135,6 +137,8 @@ services:
 ```
 
 [Wireguard](/containers/wireguard)
+
+My personal access VPN, i'm going to use nextcloud, office and heimdall with reverse proxy, but i want to remain some services onl internal. Them i use my VPN to access them.
 
 ```yaml
 ---

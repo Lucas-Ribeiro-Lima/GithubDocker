@@ -1,6 +1,23 @@
 Here is the basic duckdns docker composed utilized
 
-containers\duckdns\docker-compose.yml
+```yaml
+---
+version: "3"
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=America/Sao_Paulo
+      - SUBDOMAINS={firstdomain,seconddomain,thirddomain}
+      - TOKEN={yourtoken}
+    volumes:
+      - /GithubDocker/containers/duckdns:/config #optional
+    network_mode: bridge
+    restart: unless-stopped
+```
 
 Some configurations gonna be in hand, you gonna need to specify the domains do you wanna actualize and your token to authorize.
 

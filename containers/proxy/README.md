@@ -1,0 +1,46 @@
+# NGINX Proxy Manager
+
+[NGINX Proxy Manager Officel Web Site](https://nginxproxymanager.com/)
+
+Default access:
+user: admin@example.com
+password: changeme
+
+```yaml
+version: "3"
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - /GithubDocker/containers/proxy/data:/data
+      - /GithubDocker/containers/proxy/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - db
+
+  db:
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - /GithubDocker/containers/proxy/mysql:/var/lib/mysql
+
+networks:
+   bridge:
+     driver: bridge
+     external: true
+```

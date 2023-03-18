@@ -266,6 +266,7 @@ services:
 ```
 
 Relative Path of arquive config.php: *./nextcloud/app/config/config.php*
+
 Trust domain config
 ```php
 'trusted_domains' =>

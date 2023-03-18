@@ -1,6 +1,6 @@
 # NEXTCLOUD
 
-[Officel Site](https://nextcloud.com/)
+[Nextcloud Official Site](https://nextcloud.com/)
 
 ```yaml
 version: "3"
@@ -55,7 +55,7 @@ Relative Path of arquive: *./nextcloud/app/config/config.php*
     1 => 'example2.duckdns.org',
   ),
 ```
-Trust configuration for proxie
+Trust configuration for proxie.
 ```php
   'trusted_proxies' =>
   array (

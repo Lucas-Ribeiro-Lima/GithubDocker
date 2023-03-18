@@ -35,7 +35,7 @@ All services are deployed with free licenses without cost's
 
 **Keep in mind, rename this folders need's changes in all docker-composes.yml files to indicate the new correct path**
 
-# **Docker-compose.yml Services**
+# **Docker-compose Services**
 
 The complete instructions of configuration can be found in the README.md of each service folder
 
@@ -140,7 +140,7 @@ services:
 
 [Wireguard](/containers/wireguard)
 
-My personal access VPN, i'm going to use nextcloud, office and heimdall with reverse proxy, but i want to remain some services onl internal. Them i use my VPN to access them.
+My personal access VPN, i'm going to use nextcloud, office and heimdall with reverse proxy, but i want to remain some services only internal. Them i use my VPN to access them.
 
 ```yaml
 ---

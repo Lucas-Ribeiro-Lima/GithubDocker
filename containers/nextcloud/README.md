@@ -57,7 +57,7 @@ Relative Path of arquive: *./nextcloud/app/config/config.php*
 ```
 Trust configuration for proxie.
 ```php
-  'trusted_proxies' =>
+'trusted_proxies' =>
   array (
     0 => '172.0.0.11',
   ),

@@ -5,14 +5,14 @@ This is a reposity to my personal use container's and configuration files, to ex
 
 All services are deployed with free licenses without cost's
 
-# **Project**
+## **Project**
 
 1. Ubuntu Server LTS instalattion and configuration
 2. Basic linux management
 3. Installation of docker
 4. Network management
 
-# **Services and Integrations:**
+## **Services and Integrations:**
 
 1. Portainer
 2. Wake on Lan
@@ -25,7 +25,7 @@ All services are deployed with free licenses without cost's
 10. Auto duckdns external ip and ipv6 uptade of domains - Duckdns
 11. Backup service with disaster control - Duplicati
 
-# **Directory Structure**
+## **Directory Structure**
 
 - *GithubDocker*  // Where we going to store all volumes
 
@@ -35,7 +35,7 @@ All services are deployed with free licenses without cost's
 
 **Keep in mind, rename this folders need's changes in all docker-composes.yml files to indicate the new correct path**
 
-# **Docker-compose Services**
+## **Docker-compose Services**
 
 The complete instructions of configuration can be found in the README.md of each service folder
 

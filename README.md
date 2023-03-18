@@ -33,7 +33,7 @@ All services are deployed with free licenses without cost's
    
       - *app data config* // Some containers have dependencies, like databases, internal-proxies, data storage and here we going to divide that to facilitate manutention of configs. Here i'm going to store the docker-compose.yml o each service that can be used to deploy without the portainer management stack.
 
-**Keep in mind, rename this foldes need's changes in all docker-composes.yml files to indicate the new correct path**
+**Keep in mind, rename this folders need's changes in all docker-composes.yml files to indicate the new correct path**
 
 **Docker-compose.yml Services**
 
@@ -41,7 +41,7 @@ The complete instructions of configuration can be found in the README.md of each
 
 [Portainer](/containers/portainer)
 
-I *Strongly* recommend the use of the portainer to deploy the services, because is easialy to visualize the informations, restarting services, modifying resources, checking logs but ins't mandatory. You can use the docker-compose.yml pre-mades of this repository in the folders of each service to configure and deploy.
+I *Strongly* recommend the use of the portainer to deploy the services, because is easialy to visualize the informations, restarting services, modifying resources, checking logs but ins't mandatory. You can use the docker-compose.yml pre-mades of this repository for each service to configure and deploy.
 
 ```yaml
 ---
@@ -85,9 +85,11 @@ services:
 
 [Pi-hole](/containers/pihole)
 
-```yaml
-version: "3"
+Personal DNS server for internal LAN.
 
+```yaml
+---
+version: "3"
 services:
   pihole:
     container_name: piholegit
@@ -115,7 +117,7 @@ services:
 
 [Duckdns](/containers/duckdns)
 
-Free DDNS domain services, i use them because they attend for me, but you cant use normally your favorite DDNS without problems.
+Free DDNS domain services, i use them because they attend for me, but you can use normally your favorite DDNS without problems.
 
 ```yaml
 ---
@@ -175,9 +177,10 @@ services:
 
 [Nginx Proxy Manager](/containers/proxy)
 
-Version of nginx with a UI, its easy to configure our proxy and manage our let'sencrypt SSL
+Version of nginx with a UI, its easy to configure our proxy and manage our let'sencrypt SSL.
 
 ```yaml
+---
 version: "3"
 services:
   app:
@@ -217,6 +220,8 @@ networks:
 ```
 
 [Nextcloud](/containers/nextcloud)
+
+Personal Private Cloud.
 
 ```yaml
 version: "3"
@@ -262,9 +267,11 @@ services:
 
 [Onlyoffice](/containers/onlyoffice)
 
-```yaml
-version: "3"
+Office service integrated with Nextcloud to document editing.
 
+```yaml
+---
+version: "3"
 volumes:
   onlyoffice:
 
@@ -298,7 +305,10 @@ services:
 
 [Wake on Lan](/containers/wol)
 
+Wake on lan webUI.
+
 ```yaml
+---
 version: '3.9'
 services:
   backend:
@@ -321,6 +331,8 @@ volumes:
 ```
 
 [Duplicati](/containers/duplicati)
+
+Backup service.
 
 ```yaml
 ---

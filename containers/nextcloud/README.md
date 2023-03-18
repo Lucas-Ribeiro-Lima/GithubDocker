@@ -1,4 +1,8 @@
----
+# NEXTCLOUD
+
+[Officel Site](https://nextcloud.com/)
+
+```yaml
 version: "3"
 
 volumes:
@@ -38,3 +42,24 @@ services:
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
     network_mode: bridge
+```
+Relative Path of arquive: *./nextcloud/app/config/config.php*
+```php
+'trusted_domains' =>
+  array (
+    0 => 'example1.duckdns.org',
+    1 => 'example2.duckdns.org',
+  ),
+```
+
+```php
+  'trusted_proxies' =>
+  array (
+    0 => '172.0.0.11',
+  ),
+```
+
+```php
+  'overwritehost' => 'example1.duckdns.org',
+  'overwriteprotocol' => 'https',
+```

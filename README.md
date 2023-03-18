@@ -265,6 +265,42 @@ services:
     network_mode: bridge
 ```
 
+Relative Path of arquive config.php: *./nextcloud/app/config/config.php*
+Trust domain config
+```php
+'trusted_domains' =>
+  array (
+    0 => 'example1.duckdns.org',
+    1 => 'example2.duckdns.org',
+  ),
+```
+
+Trust proxy Config.
+```php
+'trusted_proxies' =>
+  array (
+    0 => '172.0.0.11',
+  ),
+```
+
+```php
+  'overwritehost' => 'example1.duckdns.org',
+  'overwriteprotocol' => 'https',
+```
+
+*webcarddav* and *webcaldav*:
+```php
+rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+
+location = /.well-known/carddav {
+   return 301 $scheme://$host:$server_port/remote.php/dav;
+ }
+location = /.well-known/caldav {
+   return 301 $scheme://$host:$server_port/remote.php/dav;
+}
+```
+
 [Onlyoffice](/containers/onlyoffice)
 
 Office service integrated with Nextcloud to document editing.

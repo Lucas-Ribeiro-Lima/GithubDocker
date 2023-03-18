@@ -38,3 +38,4 @@ services:
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
     network_mode: bridge
+

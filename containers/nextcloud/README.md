@@ -2,6 +2,8 @@
 
 [Nextcloud Official Site](https://nextcloud.com/)
 
+## Docker-Compose
+
 ```yaml
 version: "3"
 
@@ -34,8 +36,6 @@ services:
       - db
     volumes:
       - /GithubDocker/containers/nextcloud/app:/var/www/html
-    storage_opt:
-      size: '300G'
     environment:
       - MYSQL_PASSWORD=nextcloud
       - MYSQL_DATABASE=nextcloud
@@ -44,7 +44,7 @@ services:
     network_mode: bridge
 ```
 
-Some extra configurations will be necessary if Nextcloud is used with a FQDN and with a proxie.
+## Reverse Proxy Configuration
 
 That is responsible to say what domains is secure to Nextcloud.
 Relative Path of arquive: *./nextcloud/app/config/config.php*
@@ -83,3 +83,75 @@ location = /.well-known/caldav {
    return 301 $scheme://$host:$server_port/remote.php/dav;
 }
 ```
+## PHP Memory Limit
+
+To increase PHP memory limit you can add the follown environment variable to docker-compose
+
+```yml
+- PHP_MEMORY_LIMIT=1028M
+```
+To verify the actual PHP memory limit you can use the following command changing the container name *nextcloud-app* to yours.
+```shell
+sudo docker exec nextcloud-app /bin/bash -c 'env' | grep PHP_MEMORY_LIMIT
+```
+
+## CronJobs
+
+The default background process is AJAX, but nextcloud suggest we use cronjobs to do the work. To do that i opted to use cronjob on host executing docker exec commands.
+
+```shell
+crontab -e
+
+*/5 * * * * docker exec -u www-data nextcloud-app php -f /var/www/html/cron.php
+
+*/15 * * * * docker exec -u www-data nextcloud-app php -f /var/www/html/occ preview:pre-generate -vvv
+```
+
+## Preview Generator APP
+
+We need install some packages, ffmpeg, imagemagick and ghostscript. To customize the official image use the following command on images portainer.
+
+```shell
+FROM nextcloud:25
+
+RUN apt-get update && apt-get install -y imagemagick ffmpeg ghostscript && rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2-foreground"]
+```
+
+To enable preview to video files you will need install the preview generator APP of the Nextcloud store them configure the config.php
+
+```php
+    'preview_max_x' => '2048',
+    'preview_max_y' => '2048',
+    'jpeg_quality' => '60',
+    'ffmpeg' => '/usr/bin/ffmpeg',
+    'enable_previews' => true,
+    'enabledPreviewProviders' =>
+    array (
+        0 => 'OC\\Preview\\TXT',
+        1 => 'OC\\Preview\\MarkDown',
+        2 => 'OC\\Preview\\OpenDocument',
+        3 => 'OC\\Preview\\PDF',
+        4 => 'OC\\Preview\\MSOffice2003',
+        5 => 'OC\\Preview\\MSOfficeDoc',
+        6 => 'OC\\Preview\\Image',
+        7 => 'OC\\Preview\\Photoshop',
+        8 => 'OC\\Preview\\TIFF',
+        9 => 'OC\\Preview\\SVG',
+        10 => 'OC\\Preview\\Font',
+        11 => 'OC\\Preview\\MP3',
+        12 => 'OC\\Preview\\Movie',
+        13 => 'OC\\Preview\\MKV',
+        14 => 'OC\\Preview\\MP4',
+        15 => 'OC\\Preview\\AVI',
+    ).
+```
+Then we going to executing the script to generate all previews.
+
+```shell
+docker exec -u www-data nextcloud-app php -f /var/www/html/occ preview:generate-all -vvv
+```
+
+After that we only need the cronjob pre-generating previews. Just return to Cron configuration if you skipped that.

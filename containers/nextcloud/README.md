@@ -114,7 +114,7 @@ We need install some packages, ffmpeg, imagemagick and ghostscript. To customize
 ```shell
 FROM nextcloud:25
 
-RUN apt-get update && apt-get install -y imagemagick ffmpeg ghostscript && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y imagemagick ffmpeg ghostscript && apt -y install smbclient libsmbclient-dev && pecl install smbclient && docker-php-ext-enable smbclient && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
@@ -146,7 +146,7 @@ To enable preview to video files you will need install the preview generator APP
         13 => 'OC\\Preview\\MKV',
         14 => 'OC\\Preview\\MP4',
         15 => 'OC\\Preview\\AVI',
-    ).
+    ),
 ```
 Then we going to executing the script to generate all previews.
 
